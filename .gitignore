@@ -43,3 +43,4 @@ Desktop.ini
 scratch/
 *.bak
 *.tmp
+.vercel
