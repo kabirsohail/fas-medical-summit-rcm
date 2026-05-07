@@ -306,7 +306,7 @@ h3 { font-size: clamp(24px, 2.5vw, 36px); }
   background: var(--bg-surface);
   border-left: 1px solid var(--line);
   padding: 80px 32px 32px;
-  z-index: 99;
+  z-index: 199;
   transform: translateX(100%);
   transition: transform 0.4s var(--ease-out);
   overflow-y: auto;
@@ -315,7 +315,7 @@ h3 { font-size: clamp(24px, 2.5vw, 36px); }
 .mobile-menu-overlay {
   position: fixed; inset: 0;
   background: rgba(0,0,0,0.6);
-  z-index: 98; opacity: 0; pointer-events: none;
+  z-index: 198; opacity: 0; pointer-events: none;
   transition: opacity 0.3s;
 }
 .mobile-menu-overlay.open { opacity: 1; pointer-events: auto; }
@@ -325,7 +325,7 @@ h3 { font-size: clamp(24px, 2.5vw, 36px); }
   cursor: pointer; padding: 8px;
 }
 .mobile-menu-section { margin-bottom: 32px; }
-.mobile-menu-section h5 {
+.mobile-menu-title {
   font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em;
   text-transform: uppercase; color: var(--gold);
   margin-bottom: 16px; font-weight: 500;
@@ -2994,7 +2994,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6L18 18M6 18L18 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
   </button>
   <div class="mobile-menu-section">
-    <h4>Navigate</h4>
+    <div class="mobile-menu-title">Navigate</div>
     <a href="index.html">Home</a>
     <a href="about.html">About Us</a>
     <a href="#reviews">Reviews</a>
@@ -3002,7 +3002,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
     <a href="#faq">FAQ</a>
   </div>
   <div class="mobile-menu-section">
-    <h4>Services</h4>
+    <div class="mobile-menu-title">Services</div>
     <a href="services/patient-onboarding.html">Patient Onboarding</a>
     <a href="services/charge-capture-coding.html">Medical Coding</a>
     <a href="services/claims-submission.html">Claims Submission</a>
@@ -3011,7 +3011,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
     <a href="services/credentialing.html">Credentialing</a>
   </div>
   <div class="mobile-menu-section">
-    <h4>Specialties</h4>
+    <div class="mobile-menu-title">Specialties</div>
     <a href="specialties/ambulatory-surgery.html">Ambulatory Surgery</a>
     <a href="specialties/anesthesiology.html">Anesthesiology</a>
     <a href="specialties/pain-management.html">Pain Management</a>
@@ -3904,7 +3904,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
             <h3>Proven, measurable results</h3>
             <div class="why-toggle">+</div>
           </div>
-          <p>Numbers don't lie. Our clients typically see denial rates drop by 20-40%. Days in A/R down 15-25%. Revenue growth up to 30%. We don't promise miracles—we deliver consistent, measurable improvements.</p>
+          <p>Numbers don't lie. FAS reports a 96% first-pass acceptance rate, 32-day average A/R, and client revenue growth up to 30%. The point is not a miracle claim; it is consistent measurement, clear reporting, and work you can inspect.</p>
         </div>
       </div>
 
@@ -4885,7 +4885,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
         </button>
 
         <p class="form-disclaimer">
-          By submitting this form, you agree to our <a href="privacy.html">Privacy Policy</a>. We'll never share your information.
+          By submitting this form, you agree to our <a href="privacy.html">Privacy Policy</a>. We use your information to respond to your request and manage the consultation process.
         </p>
       </form>
 
@@ -5137,6 +5137,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const form = document.getElementById('consultation-form');
 const formSuccess = document.getElementById('form-success');
 const formError = document.getElementById('form-error');
+const defaultFormError = formError ? formError.innerHTML : '';
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   const required = form.querySelectorAll('[required]');
@@ -5149,7 +5150,14 @@ form.addEventListener('submit', async (e) => {
       field.style.borderColor = '';
     }
   });
-  if (!valid) return;
+  if (!valid) {
+    if (formError) {
+      formError.textContent = 'Please complete the highlighted required fields.';
+      formError.classList.add('show');
+      formError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    return;
+  }
 
   const submitBtn = form.querySelector('button[type="submit"]');
   const originalLabel = submitBtn ? submitBtn.textContent : '';
@@ -5188,6 +5196,7 @@ form.addEventListener('submit', async (e) => {
       submitBtn.textContent = originalLabel;
     }
     if (formError) {
+      formError.innerHTML = defaultFormError;
       formError.classList.add('show');
     } else {
       alert('Something went wrong sending your request. Please try again or call 972-294-5716.');

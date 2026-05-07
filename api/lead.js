@@ -172,7 +172,7 @@ export default async function handler(req, res) {
     storage = { stored: false, mode: 'blob_error' };
   }
 
-  // Always log so leads are never lost, even if storage/email is misconfigured.
+  // Log every accepted lead so storage/email issues are visible during review.
   console.log('[LEAD]', JSON.stringify({ ...record, storage }));
 
   const apiKey = process.env.RESEND_API_KEY;

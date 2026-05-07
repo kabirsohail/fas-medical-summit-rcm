@@ -306,7 +306,7 @@ h3 { font-size: clamp(24px, 2.5vw, 36px); }
   background: var(--bg-surface);
   border-left: 1px solid var(--line);
   padding: 80px 32px 32px;
-  z-index: 99;
+  z-index: 199;
   transform: translateX(100%);
   transition: transform 0.4s var(--ease-out);
   overflow-y: auto;
@@ -315,7 +315,7 @@ h3 { font-size: clamp(24px, 2.5vw, 36px); }
 .mobile-menu-overlay {
   position: fixed; inset: 0;
   background: rgba(0,0,0,0.6);
-  z-index: 98; opacity: 0; pointer-events: none;
+  z-index: 198; opacity: 0; pointer-events: none;
   transition: opacity 0.3s;
 }
 .mobile-menu-overlay.open { opacity: 1; pointer-events: auto; }
@@ -325,7 +325,7 @@ h3 { font-size: clamp(24px, 2.5vw, 36px); }
   cursor: pointer; padding: 8px;
 }
 .mobile-menu-section { margin-bottom: 32px; }
-.mobile-menu-section h5 {
+.mobile-menu-title {
   font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em;
   text-transform: uppercase; color: var(--gold);
   margin-bottom: 16px; font-weight: 500;
@@ -1929,7 +1929,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6L18 18M6 18L18 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
   </button>
   <div class="mobile-menu-section">
-    <h4>Navigate</h4>
+    <div class="mobile-menu-title">Navigate</div>
     <a href="../index.html">Home</a>
     <a href="../about.html">About Us</a>
     <a href="../index.html#reviews">Reviews</a>
@@ -1937,7 +1937,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
     <a href="../index.html#faq">FAQ</a>
   </div>
   <div class="mobile-menu-section">
-    <h4>Services</h4>
+    <div class="mobile-menu-title">Services</div>
     <a href="../services/patient-onboarding.html">Patient Onboarding</a>
     <a href="../services/charge-capture-coding.html">Medical Coding</a>
     <a href="../services/claims-submission.html">Claims Submission</a>
@@ -1946,7 +1946,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
     <a href="../services/credentialing.html">Credentialing</a>
   </div>
   <div class="mobile-menu-section">
-    <h4>Specialties</h4>
+    <div class="mobile-menu-title">Specialties</div>
     <a href="../specialties/ambulatory-surgery.html">Ambulatory Surgery</a>
     <a href="../specialties/anesthesiology.html">Anesthesiology</a>
     <a href="../specialties/pain-management.html">Pain Management</a>
@@ -2007,7 +2007,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
     <div>
       <h2>You shouldn&apos;t need a forensic team to understand your own revenue cycle.</h2>
       <p>Most billing companies provide reports. The reports are dense. They contain numbers. They lack context. They don&apos;t tell you what&apos;s going wrong, what&apos;s going right, or what to do about either. Six months in, you have a stack of monthly PDFs and no clearer sense of your business than when you started.</p>
-        <p><strong>FAS Medical Summit treats reporting as a primary deliverable—not an afterthought.</strong> Our transparent dashboards surface the metrics that matter: days in A/R, denial rates by category and payer, first-pass acceptance trends, net collection rate, contractual variance. You see what&apos;s happening as it happens, not 30 days later.</p>
+        <p><strong>FAS Medical Summit treats reporting as a primary deliverable—not an afterthought.</strong> Our transparent dashboards surface the metrics that matter: days in A/R, denial rates by category and payer, first-pass acceptance trends, net collection rate, contractual variance. You see changing patterns through continuously updated reporting, not stale monthly summaries.</p>
         <p>Beyond dashboards, our quarterly business reviews bring a senior consultant to the table to interpret the data, identify patterns, and recommend strategic adjustments. This is where reporting transitions into intelligence—where numbers become decisions.</p>
     </div>
   </div>

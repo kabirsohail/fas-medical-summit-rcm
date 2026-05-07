@@ -44,7 +44,7 @@ APPROACH = {
             ('Track status in real time',
              'Once submitted, claims are monitored through the clearinghouse and payer portals. Stuck claims surface within days, not weeks.'),
             ('Fix issues before they turn into write-offs',
-             'Rejections and requests for additional information get worked the same day they appear. Nothing sits in a queue waiting to age.'),
+             'Rejections and requests for additional information get worked the same day they appear, with queues reviewed before items age unnecessarily.'),
         ]),
     'services/credentialing.html': (
         'Credentialing is the', 'foundation of getting paid.',
@@ -56,7 +56,7 @@ APPROACH = {
             ('Track approvals and follow up',
              'Every application is tracked weekly until approved. Payer requests for additional information come back to us, not to your front desk.'),
             ('Maintain credentials before they lapse',
-             'License renewals, CAQH re-attestations, and payer revalidations tracked on an ongoing calendar so a lapsed credential never causes a gap in billing.'),
+             'License renewals, CAQH re-attestations, and payer revalidations tracked on an ongoing calendar to reduce preventable billing gaps from lapsed credentials.'),
         ]),
     'services/denial-management.html': (
         'Resolve denials.', 'Prevent the next ones.',
@@ -159,7 +159,7 @@ APPROACH = {
     'specialties/emergency-medicine.html': (
         'Emergency medicine billing —', 'fast charges, complex coding.',
         [
-            ('Capture charges in near-real-time',
+            ('Capture charges quickly',
              'Encounters coded within 24-48 hours, not weeks. Late charges hurt cash flow and miss timely-filing windows.'),
             ('Code E/M levels accurately',
              'High-acuity ED visits coded to the level the documentation supports. Critical care time captured separately. Procedures captured alongside E/M.'),
