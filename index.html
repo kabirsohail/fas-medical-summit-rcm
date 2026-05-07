@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FAS Medical Summit — RCM for Surgical Specialties</title>
 <!-- desai-photo-v1 -->
-<meta name="description" content="Premier revenue cycle management for surgical specialty practices. 25+ years of expertise. 96% first-pass acceptance. 32-day A/R. Frisco, Texas.">
+<meta name="description" content="Premier revenue cycle management for surgical specialty practices. 25+ years of owner expertise. 96% first-pass acceptance. 32-day A/R. Frisco, Texas.">
 <meta name="keywords" content="medical billing, revenue cycle management, RCM, surgical billing, ASC billing, anesthesia billing, FAS Medical Summit, Texas medical billing">
 
 <!-- Open Graph -->
@@ -237,22 +237,27 @@ h3 { font-size: clamp(24px, 2.5vw, 36px); }
   transition: color 0.2s var(--ease-out);
   display: flex; align-items: center; gap: 6px;
 }
-.nav-item:hover { color: var(--ink-primary); }
+.nav-item:hover,
+.nav-item.open { color: var(--ink-primary); }
+.nav-item:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 .nav-item .chev { width: 10px; height: 10px; transition: transform 0.3s var(--ease-out); }
-.nav-item:hover .chev { transform: rotate(180deg); }
+.nav-item.open .chev { transform: rotate(180deg); }
 
 .dropdown {
   position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%) translateY(8px);
   min-width: 340px;
+  max-height: min(70vh, 640px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
   background: var(--bg-elevated);
   border: 1px solid var(--line-strong);
   border-radius: var(--radius-md);
   padding: 12px;
   opacity: 0; visibility: hidden; pointer-events: none;
-  transition: all 0.3s var(--ease-out);
+  transition: opacity 0.22s var(--ease-out), transform 0.22s var(--ease-out), visibility 0.22s var(--ease-out);
   box-shadow: 0 24px 60px rgba(0,0,0,0.4);
 }
-.nav-item:hover .dropdown {
+.nav-item.open .dropdown {
   opacity: 1; visibility: visible; pointer-events: auto;
   transform: translateX(-50%) translateY(0);
 }
@@ -2834,7 +2839,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
 
   <!-- Open Graph -->
   <meta property="og:title" content="FAS Medical Summit — RCM for Surgical Specialties">
-  <meta property="og:description" content="Premier revenue cycle management for surgical specialty practices. 25+ years of expertise. 96% first-pass acceptance. 32-day A/R. Frisco, Texas.">
+  <meta property="og:description" content="Premier revenue cycle management for surgical specialty practices. 25+ years of owner expertise. 96% first-pass acceptance. 32-day A/R. Frisco, Texas.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://fasmedicalsummitrcm.com/">
   <meta property="og:site_name" content="FAS Medical Summit RCM">
@@ -2845,7 +2850,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="FAS Medical Summit — RCM for Surgical Specialties">
-  <meta name="twitter:description" content="Premier revenue cycle management for surgical specialty practices. 25+ years of expertise. 96% first-pass acceptance. 32-day A/R. Frisco, Texas.">
+  <meta name="twitter:description" content="Premier revenue cycle management for surgical specialty practices. 25+ years of owner expertise. 96% first-pass acceptance. 32-day A/R. Frisco, Texas.">
   <meta name="twitter:image" content="https://fasmedicalsummitrcm.com/og-image.png">
 
   <!-- Robots -->
@@ -2856,7 +2861,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
   "@context": "https://schema.org",
   "@type": "MedicalBusiness",
   "name": "FAS Medical Summit RCM",
-  "description": "Premier revenue cycle management for surgical specialty practices. 25+ years of expertise. 96% first-pass acceptance. 32-day A/R. Frisco, Texas.",
+  "description": "Premier revenue cycle management for surgical specialty practices. 25+ years of owner expertise. 96% first-pass acceptance. 32-day A/R. Frisco, Texas.",
   "url": "https://fasmedicalsummitrcm.com",
   "telephone": "+1-972-294-5716",
   "email": "info@fasmedicalsummitrcm.com",
@@ -2868,7 +2873,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
     "postalCode": "75036",
     "addressCountry": "US"
   },
-  "foundingDate": "2000",
+  "foundingDate": "2022",
   "areaServed": {
     "@type": "Country",
     "name": "United States"
@@ -2935,7 +2940,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
     <div class="nav-menu">
       <a href="index.html" class="nav-item">Home</a>
 
-      <div class="nav-item" tabindex="0">
+      <div class="nav-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
         Services
         <svg class="chev" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         <div class="dropdown dropdown-wide">
@@ -2953,7 +2958,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
         </div>
       </div>
 
-      <div class="nav-item" tabindex="0">
+      <div class="nav-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
         Specialties
         <svg class="chev" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         <div class="dropdown">
@@ -3030,7 +3035,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
 
   <div class="hero-content">
     <div class="hero-badge">
-      <span class="hero-badge-pill">EST. 2000</span>
+      <span class="hero-badge-pill">FORMED 2022</span>
       Where precision meets professionalism
     </div>
 
@@ -3041,7 +3046,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
     </h1>
 
     <p class="hero-sub">
-      For twenty-five years, FAS Medical Summit has delivered enterprise-grade revenue cycle management to ambulatory surgery centers, anesthesia groups, and procedural practices. Where outcomes are measured, not promised.
+      Led by owners with 25+ years in medical billing, FAS Medical Summit delivers enterprise-grade revenue cycle management to ambulatory surgery centers, anesthesia groups, and procedural practices. Where outcomes are measured, not promised.
     </p>
 
     <div class="hero-actions">
@@ -3053,7 +3058,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
     </div>
 
     <div class="hero-marquee">
-      <div class="hero-marquee-label">Operating at scale since 2000</div>
+      <div class="hero-marquee-label">Company formed in 2022</div>
       <div class="hero-stats">
         <div class="hero-stat">
           <div class="hero-stat-num"><span class="currency">$</span><span data-counter="2.7" data-decimals="1">0</span><span class="unit">B+</span></div>
@@ -3069,7 +3074,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
         </div>
         <div class="hero-stat">
           <div class="hero-stat-num"><span data-counter="25">0</span>+</div>
-          <div class="hero-stat-label">Years of RCM Expertise</div>
+          <div class="hero-stat-label">Owner RCM Experience</div>
         </div>
       </div>
     </div>
@@ -3488,7 +3493,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
   <div class="container impact-content">
     <span class="eyebrow reveal">Operational Scale</span>
     <h2 class="reveal" style="margin-top: 24px;">The numbers that<br><span class="serif-italic">define our practice.</span></h2>
-    <p class="subhead reveal reveal-delay-1">Twenty-five years. Hundreds of clients. Billions in claims processed. The infrastructure of an enterprise. The responsiveness of a partner.</p>
+    <p class="subhead reveal reveal-delay-1">Owner-led expertise. Hundreds of clients. Billions in claims processed. The infrastructure of an enterprise. The responsiveness of a partner.</p>
 
     <div class="stats-grid reveal reveal-delay-2">
       <div class="stat-block">
@@ -3881,7 +3886,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
             <h3>Technology with human oversight</h3>
             <div class="why-toggle">+</div>
           </div>
-          <p>Automation is great—until it isn't. We use top-tier billing software, sure. But there's always a real person reviewing the work. Software doesn't catch everything, and neither do overworked in-house staff trying to do twelve jobs at once.</p>
+          <p>Automation is great—until it isn't. We use top-tier billing software, sure. But real people stay involved in review. Software doesn't catch everything, and neither do overworked in-house staff trying to do twelve jobs at once.</p>
         </div>
 
         <div class="why-item">
@@ -4032,7 +4037,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
 
       <div class="compare-row">
         <div class="compare-cell-feature">Specialty Expertise</div>
-        <div class="compare-cell-fas"><span class="check-yes">✓</span> 25 years deep in surgical specialties—anesthesia, ASC, pain, cardiology</div>
+        <div class="compare-cell-fas"><span class="check-yes">✓</span> Owner team with 25+ years in medical billing, focused on surgical specialty RCM</div>
         <div class="compare-cell-other"><span class="check-no">✕</span> Generalist team applying same playbook to every specialty</div>
       </div>
 
@@ -4148,7 +4153,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
         <h2>Strategic perspective on<br><span class="serif-italic">healthcare revenue cycles.</span></h2>
       </div>
       <div class="section-head-desc">
-        Practical guidance from twenty-five years of operating in surgical specialty billing. <a href="insights.html" style="color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold);">Browse all articles →</a>
+        Practical guidance shaped by 25+ years of owner medical billing experience. <a href="insights.html" style="color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold);">Browse all articles →</a>
       </div>
     </div>
 
@@ -5008,6 +5013,47 @@ hamburger.addEventListener('click', openMobileMenu);
 mobileMenuClose.addEventListener('click', closeMobileMenu);
 mobileMenuOverlay.addEventListener('click', closeMobileMenu);
 mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileMenu));
+
+// Desktop dropdowns: click to open, stay open until another click/outside click/Escape.
+const desktopDropdownItems = Array.from(document.querySelectorAll('.nav-menu .nav-item')).filter(item => item.querySelector('.dropdown'));
+function closeDesktopDropdowns(except = null) {
+  desktopDropdownItems.forEach(item => {
+    if (item === except) return;
+    item.classList.remove('open');
+    item.setAttribute('aria-expanded', 'false');
+  });
+}
+desktopDropdownItems.forEach(item => {
+  item.setAttribute('role', 'button');
+  item.setAttribute('aria-haspopup', 'true');
+  item.setAttribute('aria-expanded', 'false');
+
+  item.addEventListener('click', (e) => {
+    if (e.target.closest('.dropdown-item')) {
+      closeDesktopDropdowns();
+      return;
+    }
+    e.preventDefault();
+    const willOpen = !item.classList.contains('open');
+    closeDesktopDropdowns(item);
+    item.classList.toggle('open', willOpen);
+    item.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+  });
+
+  item.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      item.click();
+    }
+    if (e.key === 'Escape') {
+      closeDesktopDropdowns();
+      item.focus();
+    }
+  });
+});
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.nav-menu .nav-item')) closeDesktopDropdowns();
+});
 
 // Reveal on scroll
 const revealElements = document.querySelectorAll('.reveal');

@@ -236,22 +236,27 @@ h3 { font-size: clamp(24px, 2.5vw, 36px); }
   transition: color 0.2s var(--ease-out);
   display: flex; align-items: center; gap: 6px;
 }
-.nav-item:hover { color: var(--ink-primary); }
+.nav-item:hover,
+.nav-item.open { color: var(--ink-primary); }
+.nav-item:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 .nav-item .chev { width: 10px; height: 10px; transition: transform 0.3s var(--ease-out); }
-.nav-item:hover .chev { transform: rotate(180deg); }
+.nav-item.open .chev { transform: rotate(180deg); }
 
 .dropdown {
   position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%) translateY(8px);
   min-width: 340px;
+  max-height: min(70vh, 640px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
   background: var(--bg-elevated);
   border: 1px solid var(--line-strong);
   border-radius: var(--radius-md);
   padding: 12px;
   opacity: 0; visibility: hidden; pointer-events: none;
-  transition: all 0.3s var(--ease-out);
+  transition: opacity 0.22s var(--ease-out), transform 0.22s var(--ease-out), visibility 0.22s var(--ease-out);
   box-shadow: 0 24px 60px rgba(0,0,0,0.4);
 }
-.nav-item:hover .dropdown {
+.nav-item.open .dropdown {
   opacity: 1; visibility: visible; pointer-events: auto;
   transform: translateX(-50%) translateY(0);
 }
@@ -1720,34 +1725,34 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
     <div class="nav-menu">
       <a href="index.html" class="nav-item">Home</a>
 
-      <div class="nav-item" tabindex="0">
+      <div class="nav-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
         Services
         <svg class="chev" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         <div class="dropdown dropdown-wide">
           <div class="dropdown-grid">
-            <a href="index.html#services" class="dropdown-item"><span class="dot"></span>Patient Onboarding & Pre-Registration</a>
-            <a href="index.html#services" class="dropdown-item"><span class="dot"></span>Charge Capture & Medical Coding</a>
-            <a href="index.html#services" class="dropdown-item"><span class="dot"></span>Claims Submission & Processing</a>
-            <a href="index.html#services" class="dropdown-item"><span class="dot"></span>Payment Posting & Reconciliation</a>
-            <a href="index.html#services" class="dropdown-item"><span class="dot"></span>Denial Management & Appeals</a>
-            <a href="index.html#services" class="dropdown-item"><span class="dot"></span>Accounts Receivable & Follow-Up</a>
-            <a href="index.html#services" class="dropdown-item"><span class="dot"></span>Patient Billing & Statements</a>
-            <a href="index.html#services" class="dropdown-item"><span class="dot"></span>Reporting & Analytics</a>
-            <a href="index.html#services" class="dropdown-item"><span class="dot"></span>Credentialing & Practice Management</a>
+            <a href="services/patient-onboarding.html" class="dropdown-item"><span class="dot"></span>Patient Onboarding & Pre-Registration</a>
+            <a href="services/charge-capture-coding.html" class="dropdown-item"><span class="dot"></span>Charge Capture & Medical Coding</a>
+            <a href="services/claims-submission.html" class="dropdown-item"><span class="dot"></span>Claims Submission & Processing</a>
+            <a href="services/payment-posting.html" class="dropdown-item"><span class="dot"></span>Payment Posting & Reconciliation</a>
+            <a href="services/denial-management.html" class="dropdown-item"><span class="dot"></span>Denial Management & Appeals</a>
+            <a href="services/ar-follow-up.html" class="dropdown-item"><span class="dot"></span>Accounts Receivable & Follow-Up</a>
+            <a href="services/patient-billing.html" class="dropdown-item"><span class="dot"></span>Patient Billing & Statements</a>
+            <a href="services/reporting-analytics.html" class="dropdown-item"><span class="dot"></span>Reporting & Analytics</a>
+            <a href="services/credentialing.html" class="dropdown-item"><span class="dot"></span>Credentialing & Practice Management</a>
           </div>
         </div>
       </div>
 
-      <div class="nav-item" tabindex="0">
+      <div class="nav-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
         Specialties
         <svg class="chev" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         <div class="dropdown">
-          <a href="index.html#specialties" class="dropdown-item"><span class="dot"></span>Ambulatory Surgery Centers</a>
-          <a href="index.html#specialties" class="dropdown-item"><span class="dot"></span>Anesthesiology</a>
-          <a href="index.html#specialties" class="dropdown-item"><span class="dot"></span>Pain Management</a>
-          <a href="index.html#specialties" class="dropdown-item"><span class="dot"></span>Cardiology</a>
-          <a href="index.html#specialties" class="dropdown-item"><span class="dot"></span>Emergency Medicine</a>
-          <a href="index.html#specialties" class="dropdown-item"><span class="dot"></span>Family Practice</a>
+          <a href="specialties/ambulatory-surgery.html" class="dropdown-item"><span class="dot"></span>Ambulatory Surgery Centers</a>
+          <a href="specialties/anesthesiology.html" class="dropdown-item"><span class="dot"></span>Anesthesiology</a>
+          <a href="specialties/pain-management.html" class="dropdown-item"><span class="dot"></span>Pain Management</a>
+          <a href="specialties/cardiology.html" class="dropdown-item"><span class="dot"></span>Cardiology</a>
+          <a href="specialties/emergency-medicine.html" class="dropdown-item"><span class="dot"></span>Emergency Medicine</a>
+          <a href="specialties/family-practice.html" class="dropdown-item"><span class="dot"></span>Family Practice</a>
         </div>
       </div>
 
@@ -1783,21 +1788,21 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
   </div>
   <div class="mobile-menu-section">
     <h4>Services</h4>
-    <a href="index.html#services">Patient Onboarding</a>
-    <a href="index.html#services">Medical Coding</a>
-    <a href="index.html#services">Claims Submission</a>
-    <a href="index.html#services">Denial Management</a>
-    <a href="index.html#services">A/R Follow-Up</a>
-    <a href="index.html#services">Credentialing</a>
+    <a href="services/patient-onboarding.html">Patient Onboarding</a>
+    <a href="services/charge-capture-coding.html">Medical Coding</a>
+    <a href="services/claims-submission.html">Claims Submission</a>
+    <a href="services/denial-management.html">Denial Management</a>
+    <a href="services/ar-follow-up.html">A/R Follow-Up</a>
+    <a href="services/credentialing.html">Credentialing</a>
   </div>
   <div class="mobile-menu-section">
     <h4>Specialties</h4>
-    <a href="index.html#specialties">Ambulatory Surgery</a>
-    <a href="index.html#specialties">Anesthesiology</a>
-    <a href="index.html#specialties">Pain Management</a>
-    <a href="index.html#specialties">Cardiology</a>
-    <a href="index.html#specialties">Emergency Medicine</a>
-    <a href="index.html#specialties">Family Practice</a>
+    <a href="specialties/ambulatory-surgery.html">Ambulatory Surgery</a>
+    <a href="specialties/anesthesiology.html">Anesthesiology</a>
+    <a href="specialties/pain-management.html">Pain Management</a>
+    <a href="specialties/cardiology.html">Cardiology</a>
+    <a href="specialties/emergency-medicine.html">Emergency Medicine</a>
+    <a href="specialties/family-practice.html">Family Practice</a>
   </div>
   <a href="index.html#contact" class="nav-cta">Free Consultation</a>
 </div>
@@ -1851,7 +1856,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
 
       <div class="compare-row">
         <div class="compare-cell-feature">Specialty Expertise</div>
-        <div class="compare-cell-fas"><span class="check-yes">✓</span> 25 years deep in surgical specialties—anesthesia, ASC, pain, cardiology</div>
+        <div class="compare-cell-fas"><span class="check-yes">✓</span> Owner team with 25+ years in medical billing, focused on surgical specialty RCM</div>
         <div class="compare-cell-other"><span class="check-no">✕</span> Generalist team applying same playbook to every specialty</div>
       </div>
 
@@ -1931,7 +1936,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
         <h2>Six things you<br><span class="serif-italic">won&apos;t find elsewhere.</span></h2>
       </div>
       <div class="section-head-desc">
-        Beyond the comparison table, here&apos;s what twenty-five years of surgical specialty focus has built into how we operate—and what you&apos;ll notice within the first ninety days.
+        Beyond the comparison table, here&apos;s what 25+ years of owner medical billing experience has built into how we operate—and what you&apos;ll notice within the first ninety days.
       </div>
     </div>
 
@@ -2006,25 +2011,25 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
       <div class="footer-col">
         <h3>Services</h3>
         <ul>
-          <li><a href="index.html#services">Patient Onboarding</a></li>
-          <li><a href="index.html#services">Charge Capture & Coding</a></li>
-          <li><a href="index.html#services">Claims Submission</a></li>
-          <li><a href="index.html#services">Payment Posting</a></li>
-          <li><a href="index.html#services">Denial Management</a></li>
-          <li><a href="index.html#services">A/R Follow-Up</a></li>
-          <li><a href="index.html#services">Credentialing</a></li>
+          <li><a href="services/patient-onboarding.html">Patient Onboarding</a></li>
+          <li><a href="services/charge-capture-coding.html">Charge Capture & Coding</a></li>
+          <li><a href="services/claims-submission.html">Claims Submission</a></li>
+          <li><a href="services/payment-posting.html">Payment Posting</a></li>
+          <li><a href="services/denial-management.html">Denial Management</a></li>
+          <li><a href="services/ar-follow-up.html">A/R Follow-Up</a></li>
+          <li><a href="services/credentialing.html">Credentialing</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h3>Specialties</h3>
         <ul>
-          <li><a href="index.html#specialties">Ambulatory Surgery</a></li>
-          <li><a href="index.html#specialties">Anesthesiology</a></li>
-          <li><a href="index.html#specialties">Pain Management</a></li>
-          <li><a href="index.html#specialties">Cardiology</a></li>
-          <li><a href="index.html#specialties">Emergency Medicine</a></li>
-          <li><a href="index.html#specialties">Family Practice</a></li>
+          <li><a href="specialties/ambulatory-surgery.html">Ambulatory Surgery</a></li>
+          <li><a href="specialties/anesthesiology.html">Anesthesiology</a></li>
+          <li><a href="specialties/pain-management.html">Pain Management</a></li>
+          <li><a href="specialties/cardiology.html">Cardiology</a></li>
+          <li><a href="specialties/emergency-medicine.html">Emergency Medicine</a></li>
+          <li><a href="specialties/family-practice.html">Family Practice</a></li>
         </ul>
       </div>
 
@@ -2089,6 +2094,47 @@ hamburger.addEventListener('click', openMobileMenu);
 mobileMenuClose.addEventListener('click', closeMobileMenu);
 mobileMenuOverlay.addEventListener('click', closeMobileMenu);
 mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileMenu));
+
+// Desktop dropdowns: click to open, stay open until another click/outside click/Escape.
+const desktopDropdownItems = Array.from(document.querySelectorAll('.nav-menu .nav-item')).filter(item => item.querySelector('.dropdown'));
+function closeDesktopDropdowns(except = null) {
+  desktopDropdownItems.forEach(item => {
+    if (item === except) return;
+    item.classList.remove('open');
+    item.setAttribute('aria-expanded', 'false');
+  });
+}
+desktopDropdownItems.forEach(item => {
+  item.setAttribute('role', 'button');
+  item.setAttribute('aria-haspopup', 'true');
+  item.setAttribute('aria-expanded', 'false');
+
+  item.addEventListener('click', (e) => {
+    if (e.target.closest('.dropdown-item')) {
+      closeDesktopDropdowns();
+      return;
+    }
+    e.preventDefault();
+    const willOpen = !item.classList.contains('open');
+    closeDesktopDropdowns(item);
+    item.classList.toggle('open', willOpen);
+    item.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+  });
+
+  item.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      item.click();
+    }
+    if (e.key === 'Escape') {
+      closeDesktopDropdowns();
+      item.focus();
+    }
+  });
+});
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.nav-menu .nav-item')) closeDesktopDropdowns();
+});
 
 // Reveal on scroll
 const revealElements = document.querySelectorAll('.reveal');

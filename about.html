@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About FAS Medical Summit | 25 Years of Specialty RCM</title>
-<meta name="description" content="Founded 2000 in Frisco, Texas. 450+ specialists. $2.7B+ processed since 2022. The story of how FAS Medical Summit became a leader in surgical specialty RCM.">
+<title>About FAS Medical Summit | Owner-Led Specialty RCM</title>
+<meta name="description" content="Formed in 2022 in Frisco, Texas by medical billing operators with 25+ years of experience. 450+ specialists. $2.7B+ processed since 2022.">
 <meta name="keywords" content="medical billing, revenue cycle management, RCM, surgical billing, ASC billing, anesthesia billing, FAS Medical Summit, Texas medical billing">
 
 <!-- Open Graph -->
@@ -236,22 +236,27 @@ h3 { font-size: clamp(24px, 2.5vw, 36px); }
   transition: color 0.2s var(--ease-out);
   display: flex; align-items: center; gap: 6px;
 }
-.nav-item:hover { color: var(--ink-primary); }
+.nav-item:hover,
+.nav-item.open { color: var(--ink-primary); }
+.nav-item:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 .nav-item .chev { width: 10px; height: 10px; transition: transform 0.3s var(--ease-out); }
-.nav-item:hover .chev { transform: rotate(180deg); }
+.nav-item.open .chev { transform: rotate(180deg); }
 
 .dropdown {
   position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%) translateY(8px);
   min-width: 340px;
+  max-height: min(70vh, 640px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
   background: var(--bg-elevated);
   border: 1px solid var(--line-strong);
   border-radius: var(--radius-md);
   padding: 12px;
   opacity: 0; visibility: hidden; pointer-events: none;
-  transition: all 0.3s var(--ease-out);
+  transition: opacity 0.22s var(--ease-out), transform 0.22s var(--ease-out), visibility 0.22s var(--ease-out);
   box-shadow: 0 24px 60px rgba(0,0,0,0.4);
 }
-.nav-item:hover .dropdown {
+.nav-item.open .dropdown {
   opacity: 1; visibility: visible; pointer-events: auto;
   transform: translateX(-50%) translateY(0);
 }
@@ -1703,8 +1708,8 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
   <link rel="canonical" href="https://fasmedicalsummitrcm.com/about.html">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="About FAS Medical Summit | 25 Years of Specialty RCM">
-  <meta property="og:description" content="Founded 2000 in Frisco, Texas. 450+ specialists. $2.7B+ processed since 2022. The story of how FAS Medical Summit became a leader in surgical specialty RCM.">
+  <meta property="og:title" content="About FAS Medical Summit | Owner-Led Specialty RCM">
+  <meta property="og:description" content="Formed in 2022 in Frisco, Texas by medical billing operators with 25+ years of experience. 450+ specialists. $2.7B+ processed since 2022.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://fasmedicalsummitrcm.com/about.html">
   <meta property="og:site_name" content="FAS Medical Summit RCM">
@@ -1714,8 +1719,8 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="About FAS Medical Summit | 25 Years of Specialty RCM">
-  <meta name="twitter:description" content="Founded 2000 in Frisco, Texas. 450+ specialists. $2.7B+ processed since 2022. The story of how FAS Medical Summit became a leader in surgical specialty RCM.">
+  <meta name="twitter:title" content="About FAS Medical Summit | Owner-Led Specialty RCM">
+  <meta name="twitter:description" content="Formed in 2022 in Frisco, Texas by medical billing operators with 25+ years of experience. 450+ specialists. $2.7B+ processed since 2022.">
   <meta name="twitter:image" content="https://fasmedicalsummitrcm.com/og-image.png">
 
   <!-- Robots -->
@@ -1725,13 +1730,13 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
 {
   "@context": "https://schema.org",
   "@type": "AboutPage",
-  "name": "About FAS Medical Summit | 25 Years of Specialty RCM",
-  "description": "Founded 2000 in Frisco, Texas. 450+ specialists. $2.7B+ processed since 2022. The story of how FAS Medical Summit became a leader in surgical specialty RCM.",
+  "name": "About FAS Medical Summit | Owner-Led Specialty RCM",
+  "description": "Formed in 2022 in Frisco, Texas by medical billing operators with 25+ years of experience. 450+ specialists. $2.7B+ processed since 2022.",
   "url": "https://fasmedicalsummitrcm.com/about.html",
   "mainEntity": {
     "@type": "Organization",
     "name": "FAS Medical Summit RCM",
-    "foundingDate": "2000",
+    "foundingDate": "2022",
     "numberOfEmployees": {
       "@type": "QuantitativeValue",
       "value": "450"
@@ -1786,7 +1791,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
     <div class="nav-menu">
       <a href="index.html" class="nav-item">Home</a>
 
-      <div class="nav-item" tabindex="0">
+      <div class="nav-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
         Services
         <svg class="chev" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         <div class="dropdown dropdown-wide">
@@ -1804,7 +1809,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
         </div>
       </div>
 
-      <div class="nav-item" tabindex="0">
+      <div class="nav-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
         Specialties
         <svg class="chev" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         <div class="dropdown">
@@ -1883,8 +1888,8 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
       <span>About</span>
     </div>
     <span class="eyebrow">About FAS Medical Summit</span>
-    <h1>Twenty-five years<br>of <span class="accent">surgical specialty</span> RCM.</h1>
-    <p class="page-hero-sub">FAS Medical Summit was built on a single conviction: surgical specialty practices deserve billing partners who actually understand them. We&apos;ve spent two and a half decades earning that distinction—and we&apos;re not interested in being anything else.</p>
+    <h1>Owner-led<br><span class="accent">surgical specialty</span> RCM.</h1>
+    <p class="page-hero-sub">FAS Medical Summit was formed in 2022 on a single conviction: surgical specialty practices deserve billing partners who actually understand them. The ownership brings 25+ years of medical billing experience to that work.</p>
   </div>
 </section>
 
@@ -1895,9 +1900,9 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
     </div>
     <div>
       <h2>Where <span class="em">precision meets professionalism.</span></h2>
-      <p>Founded in 2000, FAS Medical Summit has grown from a small Texas billing operation into an enterprise-grade revenue cycle management partner serving surgical specialty practices across the United States. Headquartered in Frisco, Texas, with global delivery infrastructure supporting 450+ specialists, we&apos;ve processed over $2.7 billion in claims since 2022 alone.</p>
-      <p><strong>Our focus has never wavered.</strong> While other billing companies expanded into every specialty under the sun, we deliberately concentrated on surgical disciplines—ambulatory surgery centers, anesthesiology, pain management, cardiology, emergency medicine, family practice. The depth that comes from that focus is what our clients tell us makes the difference.</p>
-      <p>Today, we serve more than 200 active clients, manage 50+ ongoing strategic projects, and consistently deliver outcomes that exceed industry benchmarks. Our 96% first-pass claim acceptance rate, 32-day average days in A/R, and up-to-30% revenue growth for clients reflect the operational discipline we&apos;ve built over a quarter century.</p>
+      <p>Formed in 2022, FAS Medical Summit is an enterprise-grade revenue cycle management partner serving surgical specialty practices across the United States. Headquartered in Frisco, Texas, with global delivery infrastructure supporting 450+ specialists, we&apos;ve processed over $2.7 billion in claims since 2022.</p>
+      <p><strong>Our focus is deliberate.</strong> While other billing companies expand into every specialty under the sun, we concentrate on surgical disciplines—ambulatory surgery centers, anesthesiology, pain management, cardiology, emergency medicine, family practice. The depth that comes from that focus is what our clients tell us makes the difference.</p>
+      <p>Today, we serve more than 200 active clients and manage 50+ ongoing strategic projects. Our 96% first-pass claim acceptance rate, 32-day average days in A/R, and up-to-30% revenue growth for clients reflect the operating discipline behind the company.</p>
       <p>But the numbers only tell part of the story. What matters is the relationships. The surgical practices that have stayed with us for ten years and counting. The owner-physicians who trust our judgment on payer negotiations. The administrators who pick up the phone knowing they&apos;ll reach a real consultant rather than a queue.</p>
     </div>
   </div>
@@ -1928,7 +1933,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
         <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M5 19L11 13L15 17L23 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M23 9V14M23 9H18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
       <h3>Outcomes you can measure</h3>
-      <p>We don&apos;t promise miracles. We document them. Quarterly performance reports show baseline-to-current improvements in denial rates, A/R aging, net collections, and recovered underpayments. Our clients can see exactly what changed, when, and why.</p>
+      <p>We ground performance work in evidence. Quarterly performance reports show baseline-to-current movement in denial rates, A/R aging, net collections, and recovered underpayments. Our clients can see exactly what changed, when, and why.</p>
     </div>
   </div>
 </section>
@@ -1964,42 +1969,42 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
 <section class="timeline-section">
   <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
     <span class="eyebrow reveal" style="justify-content: center;">Our Journey</span>
-    <h2 class="reveal" style="margin-top: 24px; font-weight: 300;">25 years.<br><span style="color: var(--gold); font-style: italic;">Compounding expertise.</span></h2>
+    <h2 class="reveal" style="margin-top: 24px; font-weight: 300;">Formed in 2022.<br><span style="color: var(--gold); font-style: italic;">Built on 25+ years of experience.</span></h2>
   </div>
   <div class="timeline-list">
     <div class="timeline-item reveal">
-      <div class="timeline-marker">2000</div>
+      <div class="timeline-marker">25+</div>
       <div class="timeline-content">
-        <h3>Founded in Texas</h3>
-        <p>FAS Medical Summit launches in Frisco, Texas, with a focused mission: serve surgical specialty practices with the operational rigor they deserve.</p>
-      </div>
-    </div>
-    <div class="timeline-item reveal">
-      <div class="timeline-marker">2008</div>
-      <div class="timeline-content">
-        <h3>Specialty depth deepens</h3>
-        <p>Concentrated investment in anesthesia, ASC, and pain management billing capabilities. Specialty-specific coding teams established.</p>
-      </div>
-    </div>
-    <div class="timeline-item reveal">
-      <div class="timeline-marker">2015</div>
-      <div class="timeline-content">
-        <h3>Global delivery operations expand</h3>
-        <p>Strategic expansion of operational capacity. Department structure formalized into Medical Coding, Transaction Processing, and A/R Management.</p>
+        <h3>Owner medical billing experience</h3>
+        <p>The ownership brings more than two decades of medical billing and revenue cycle experience into the company&apos;s operating model.</p>
       </div>
     </div>
     <div class="timeline-item reveal">
       <div class="timeline-marker">2022</div>
       <div class="timeline-content">
-        <h3>Post-NSA strategy operationalized</h3>
-        <p>The No Surprises Act reshapes surgical specialty billing. FAS adapts client strategies, builds IDR navigation capabilities, and protects client revenue through the transition.</p>
+        <h3>FAS Medical Summit formed</h3>
+        <p>The company is formed in Frisco, Texas, with a focused mission: serve surgical specialty practices with the operational rigor they deserve.</p>
       </div>
     </div>
     <div class="timeline-item reveal">
-      <div class="timeline-marker">2026</div>
+      <div class="timeline-marker">NSA</div>
+      <div class="timeline-content">
+        <h3>Post-NSA strategy operationalized</h3>
+        <p>The No Surprises Act reshapes surgical specialty billing. FAS adapts client strategies and builds operational discipline around the post-NSA reimbursement environment.</p>
+      </div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-marker">450+</div>
+      <div class="timeline-content">
+        <h3>Specialized delivery team</h3>
+        <p>Operational capacity is organized across Medical Coding, Transaction Processing, and A/R Management so each part of the revenue cycle has clear ownership.</p>
+      </div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-marker">Now</div>
       <div class="timeline-content">
         <h3>$2.7B+ in claims processed since 2022</h3>
-        <p>200+ active clients. 450+ specialists. 96% first-pass acceptance. The numbers reflect twenty-five years of compounding operational discipline.</p>
+        <p>200+ active clients. 450+ specialists. 96% first-pass acceptance. The numbers reflect the scale FAS has built since formation.</p>
       </div>
     </div>
   </div>
@@ -2122,6 +2127,47 @@ hamburger.addEventListener('click', openMobileMenu);
 mobileMenuClose.addEventListener('click', closeMobileMenu);
 mobileMenuOverlay.addEventListener('click', closeMobileMenu);
 mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileMenu));
+
+// Desktop dropdowns: click to open, stay open until another click/outside click/Escape.
+const desktopDropdownItems = Array.from(document.querySelectorAll('.nav-menu .nav-item')).filter(item => item.querySelector('.dropdown'));
+function closeDesktopDropdowns(except = null) {
+  desktopDropdownItems.forEach(item => {
+    if (item === except) return;
+    item.classList.remove('open');
+    item.setAttribute('aria-expanded', 'false');
+  });
+}
+desktopDropdownItems.forEach(item => {
+  item.setAttribute('role', 'button');
+  item.setAttribute('aria-haspopup', 'true');
+  item.setAttribute('aria-expanded', 'false');
+
+  item.addEventListener('click', (e) => {
+    if (e.target.closest('.dropdown-item')) {
+      closeDesktopDropdowns();
+      return;
+    }
+    e.preventDefault();
+    const willOpen = !item.classList.contains('open');
+    closeDesktopDropdowns(item);
+    item.classList.toggle('open', willOpen);
+    item.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+  });
+
+  item.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      item.click();
+    }
+    if (e.key === 'Escape') {
+      closeDesktopDropdowns();
+      item.focus();
+    }
+  });
+});
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.nav-menu .nav-item')) closeDesktopDropdowns();
+});
 
 // Reveal on scroll
 const revealElements = document.querySelectorAll('.reveal');

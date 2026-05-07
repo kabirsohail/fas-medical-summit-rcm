@@ -237,22 +237,27 @@ h3 { font-size: clamp(24px, 2.5vw, 36px); }
   transition: color 0.2s var(--ease-out);
   display: flex; align-items: center; gap: 6px;
 }
-.nav-item:hover { color: var(--ink-primary); }
+.nav-item:hover,
+.nav-item.open { color: var(--ink-primary); }
+.nav-item:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 .nav-item .chev { width: 10px; height: 10px; transition: transform 0.3s var(--ease-out); }
-.nav-item:hover .chev { transform: rotate(180deg); }
+.nav-item.open .chev { transform: rotate(180deg); }
 
 .dropdown {
   position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%) translateY(8px);
   min-width: 340px;
+  max-height: min(70vh, 640px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
   background: var(--bg-elevated);
   border: 1px solid var(--line-strong);
   border-radius: var(--radius-md);
   padding: 12px;
   opacity: 0; visibility: hidden; pointer-events: none;
-  transition: all 0.3s var(--ease-out);
+  transition: opacity 0.22s var(--ease-out), transform 0.22s var(--ease-out), visibility 0.22s var(--ease-out);
   box-shadow: 0 24px 60px rgba(0,0,0,0.4);
 }
-.nav-item:hover .dropdown {
+.nav-item.open .dropdown {
   opacity: 1; visibility: visible; pointer-events: auto;
   transform: translateX(-50%) translateY(0);
 }
@@ -1870,7 +1875,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
     <div class="nav-menu">
       <a href="../index.html" class="nav-item">Home</a>
 
-      <div class="nav-item" tabindex="0">
+      <div class="nav-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
         Services
         <svg class="chev" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         <div class="dropdown dropdown-wide">
@@ -1888,7 +1893,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
         </div>
       </div>
 
-      <div class="nav-item" tabindex="0">
+      <div class="nav-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
         Specialties
         <svg class="chev" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         <div class="dropdown">
@@ -1997,7 +2002,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
   <div class="content-grid reveal">
     <div class="content-aside">
       <span class="eyebrow">Why It Matters</span>
-      <div class="content-aside-meta">25+ years operating in surgical specialty RCM. Real expertise, applied to your practice.</div>
+      <div class="content-aside-meta">Owner-led RCM experience built over 25+ years. Real expertise, applied to your practice.</div>
     </div>
     <div>
       <h2>Most billing companies post the payment and move on. We don&apos;t.</h2>
@@ -2283,6 +2288,47 @@ hamburger.addEventListener('click', openMobileMenu);
 mobileMenuClose.addEventListener('click', closeMobileMenu);
 mobileMenuOverlay.addEventListener('click', closeMobileMenu);
 mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileMenu));
+
+// Desktop dropdowns: click to open, stay open until another click/outside click/Escape.
+const desktopDropdownItems = Array.from(document.querySelectorAll('.nav-menu .nav-item')).filter(item => item.querySelector('.dropdown'));
+function closeDesktopDropdowns(except = null) {
+  desktopDropdownItems.forEach(item => {
+    if (item === except) return;
+    item.classList.remove('open');
+    item.setAttribute('aria-expanded', 'false');
+  });
+}
+desktopDropdownItems.forEach(item => {
+  item.setAttribute('role', 'button');
+  item.setAttribute('aria-haspopup', 'true');
+  item.setAttribute('aria-expanded', 'false');
+
+  item.addEventListener('click', (e) => {
+    if (e.target.closest('.dropdown-item')) {
+      closeDesktopDropdowns();
+      return;
+    }
+    e.preventDefault();
+    const willOpen = !item.classList.contains('open');
+    closeDesktopDropdowns(item);
+    item.classList.toggle('open', willOpen);
+    item.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+  });
+
+  item.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      item.click();
+    }
+    if (e.key === 'Escape') {
+      closeDesktopDropdowns();
+      item.focus();
+    }
+  });
+});
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.nav-menu .nav-item')) closeDesktopDropdowns();
+});
 
 // Reveal on scroll
 const revealElements = document.querySelectorAll('.reveal');

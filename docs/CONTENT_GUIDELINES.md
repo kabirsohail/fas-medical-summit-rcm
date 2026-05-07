@@ -35,7 +35,7 @@ Title Case is reserved for proper nouns ("FAS Medical Summit," "Frisco, Texas") 
 - **Em-dashes** (—) not double-hyphens (--). Surround with no spaces or thin spaces.
 - **Curly quotes** ("smart quotes") in body copy. Straight quotes only in code samples.
 - **Apostrophes** are curly: `don't`, `practice's`, never `don't`.
-- **Numbers under 10** are spelled out in body copy ("twenty-five years"), but kept as digits in headlines and stats ("25+ Years").
+- **Numbers under 10** are spelled out in body copy, but verified business-history numbers may stay as digits for clarity ("25+ years", "formed in 2022").
 
 ## What we can claim — Verified canonical FAS data
 
@@ -43,7 +43,8 @@ These are confirmed by FAS leadership and pulled from the existing fasmedicalsum
 
 | Metric | Value | Notes |
 |---|---|---|
-| Years operating | 25+ | Founded ~2000 |
+| Company formed | 2022 | Do not say FAS was founded in 2000 |
+| Owner medical billing experience | 25+ years | Attribute 25+ years to the owner/leadership experience, not company age |
 | Team size | 450+ specialists | Across all departments, India-based |
 | Total billing value processed | $2.7B | Cumulative since 2022 |
 | First-pass acceptance rate | **96%** | NEVER use "99.8%" — that was wrong |

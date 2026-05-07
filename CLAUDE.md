@@ -27,7 +27,8 @@ A custom marketing website for **FAS Medical Summit RCM** (medical billing & RCM
 
 | Metric | Value |
 |---|---|
-| Years operating | 25+ (founded 2000) |
+| Company formed | 2022 |
+| Owner medical billing experience | 25+ years |
 | Team size | 450+ specialists |
 | Total billing value processed | $2.7B (since 2022) |
 | First-pass acceptance rate | **96%** (NEVER 99.8%) |

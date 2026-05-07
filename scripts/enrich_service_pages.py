@@ -138,11 +138,11 @@ APPROACH = {
             ('Capture the anesthesia record cleanly',
              'Start time, stop time, providers, modifiers, ASA physical status — all coded from the actual anesthesia record, not estimated from the OR schedule.'),
             ('Calculate time units correctly',
-             'Time-based unit calculation per payer rules. CRNA and supervising-physician modifiers applied correctly. No revenue lost on miscalculated units.'),
+             'Time-based unit calculation per payer rules. CRNA and supervising-physician modifiers are reviewed carefully to reduce underbilling from miscalculated units.'),
             ('Submit with payer-specific edits applied',
              'Every payer has its own anesthesia rules — concurrent care, medical direction ratios, monitoring services. We handle those rules, not your provider.'),
             ('Appeal modifier-driven denials',
-             'Modifier-related denials are common in anesthesia and almost always recoverable. We file the appeals; you keep the revenue.'),
+             'Modifier-related denials are common in anesthesia and often recoverable with the right documentation. We file the appeals; you keep the revenue.'),
         ]),
     'specialties/cardiology.html': (
         'Cardiology billing is', 'high-volume, high-complexity.',

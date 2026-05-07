@@ -93,7 +93,7 @@ fas-website/
 Every number on the site is either **verified canonical FAS data** or **clearly labeled "EXAMPLE"**. No fabricated live data, no untrue claims.
 
 **Verified canonical metrics** (used freely in headlines):
-- 25+ years experience (founded 2000)
+- Company formed in 2022; owner has 25+ years of medical billing experience
 - 450+ specialists on team
 - $2.7B processed since 2022
 - 96% first-pass acceptance rate
