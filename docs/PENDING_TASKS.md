@@ -81,10 +81,19 @@ The About page has placeholder avatars (initials in circles). Real headshots wou
 
 ### 7. Individual blog post pages
 
-Currently `insights.html` lists 10 blog topics with illustrations and excerpts, but clicking a card doesn't go anywhere (no individual article pages exist yet). Either:
-- Build out 10 article pages (significant content writing effort)
-- Mark cards as "Coming soon" until content is ready
-- Link to external resources (e.g., FAS LinkedIn posts) for now
+Completed May 7, 2026.
+
+`insights.html` now links to 10 individual article pages:
+- `blog-asc-billing-guide-2026.html`
+- `blog-anesthesia-billing-units-modifiers.html`
+- `blog-days-in-ar.html`
+- `blog-no-surprises-act-guide.html`
+- `blog-underpayment-recovery.html`
+- `blog-surgical-denial-reasons.html`
+- `blog-pain-management-documentation.html`
+- `blog-cardiology-modifier-mistakes.html`
+- `blog-ehr-integration-guide.html`
+- `blog-mips-reporting-family-practice.html`
 
 ## Nice to have
 

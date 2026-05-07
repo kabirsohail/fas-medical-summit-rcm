@@ -28,7 +28,8 @@ fas-website/
 ├── index.html              # Homepage (~227 KB — large because everything inlined)
 ├── about.html              # Company story & leadership
 ├── contact.html            # Consultation request form
-├── insights.html           # Blog landing (10 articles with SVG illustrations)
+├── insights.html           # Blog landing (10 linked articles with SVG illustrations)
+├── blog-*.html             # Individual blog article pages
 ├── process.html            # 8-stage onboarding process
 ├── why-fas.html            # FAS vs generic billers comparison
 ├── privacy.html            # Privacy Policy (legal)
@@ -76,7 +77,7 @@ fas-website/
 - **3D dashboard mockup** in Why-FAS section (DENIAL_TREND, UNDERPAYMENT_RECOVERY, REVENUE_DASHBOARD)
 - **3D platform/growth section** with floating cards (Client Growth, Integrations, Department Structure)
 - **Practice Revenue Health Check** — 4-step interactive audit form with personalized leak estimate, fit score, and recovery potential
-- **10 custom SVG blog illustrations** matching each article's topic
+- **10 custom SVG blog illustrations** matching each article's topic, with linked article pages
 - **Free Consultation form** with double-submit prevention + honeypot anti-spam
 - **Per-page SEO** — meta titles, descriptions, OG tags, Twitter Cards, JSON-LD structured data
 - **Full mobile responsive** with reduced-motion support
