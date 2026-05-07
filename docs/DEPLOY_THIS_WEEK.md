@@ -67,61 +67,15 @@ That's your shareable preview URL. Send it to FAS owners.
 
 ---
 
-## STEP 4 — Make the contact forms work (15 minutes)
+## STEP 4 — Contact forms
 
-Right now both forms (homepage and contact page) show fake "thanks" messages but don't actually email anyone. Let's fix that with **Formspree** (free).
+Completed May 7, 2026.
 
-### 4a. Sign up for Formspree
+Both forms now post to `/api/lead`. The endpoint validates submissions, blocks obvious bots with a honeypot field, stores each lead in the private Vercel Blob store `fas-leads`, and keeps Vercel Function logs as a fallback.
 
-1. Go to: **https://formspree.io**
-2. Sign up with your email (free account = 50 form submissions/month, plenty)
-3. Click **"+ New form"** or **"New project"**
-4. Name the form: `FAS Consultation`
-5. Set the email recipient: `info@fasmedicalsummitrcm.com`
-6. Click create
-7. You'll get an endpoint URL like: `https://formspree.io/f/abcd1234`
-8. **Copy that URL.** You'll need it.
+To review saved leads, open the Vercel project dashboard, go to **Storage**, open `fas-leads`, then browse the `leads/` folder.
 
-### 4b. Update the homepage form
-
-This requires editing one HTML file. Don't panic — it's just find-and-replace.
-
-1. On your laptop, open the `fas-website` folder
-2. Right-click `index.html` → "Open With" → TextEdit (Mac) or Notepad (PC)
-   - **IMPORTANT on Mac:** TextEdit might want to open it as "rich text". If you see formatting buttons, go to Format menu → "Make Plain Text" first
-3. Press `Cmd+F` (Mac) or `Ctrl+F` (Windows) to open Find
-4. Search for: `<form` (just those 5 characters)
-5. You'll find the consultation form. Look for this part nearby:
-   ```
-   <form id="consultation-form"
-   ```
-6. Right after `<form id="consultation-form"`, you should add:
-   ```
-   action="https://formspree.io/f/YOUR_ID_HERE" method="POST"
-   ```
-   Replace `YOUR_ID_HERE` with whatever Formspree gave you.
-7. So the line ends up looking like:
-   ```
-   <form id="consultation-form" action="https://formspree.io/f/abcd1234" method="POST">
-   ```
-8. Save the file (Cmd+S / Ctrl+S)
-
-### 4c. Do the same to contact.html
-
-Repeat steps 1-8 above but on `contact.html` in the same folder.
-
-### 4d. Re-deploy to Netlify
-
-1. Go back to Netlify
-2. Click your site
-3. Click **"Deploys"** tab
-4. **Drag the `fas-website` folder onto the drop-zone again** (this updates it)
-5. Wait 30 seconds for it to redeploy
-6. Visit your live URL, scroll to the consultation form, fill it out, hit submit
-7. Check info@fasmedicalsummitrcm.com email — submission should arrive
-
-**If it works:** Forms are live. You're done with this step.
-**If it doesn't:** Check that the `action="..."` URL is exactly what Formspree gave you, with no typos.
+Optional: if FAS wants every lead emailed to `info@fasmedicalsummitrcm.com`, add a `RESEND_API_KEY` environment variable in Vercel. The storage part is already live.
 
 ---
 
@@ -141,7 +95,7 @@ Send them an email (template):
 >
 > Preview here: **https://fas-medical-summit.netlify.app**
 >
-> Take a look on both desktop and mobile. The contact form is wired up and submissions go to info@fasmedicalsummitrcm.com.
+> Take a look on both desktop and mobile. The contact form is wired up and submissions are saved as private leads in Vercel.
 >
 > If you like the direction, I'd like to talk about putting this live at fasmedicalsummitrcm.com — there are a few hosting/WordPress decisions to make and I want to do this the right way.
 >

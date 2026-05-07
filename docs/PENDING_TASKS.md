@@ -18,20 +18,20 @@ Every page references `https://fasmedicalsummitrcm.com/og-image.png` in the OG m
 
 **Place at:** `assets/og-image.png` (then update site to reference `/assets/og-image.png` or move to root).
 
-### 2. Form backend not wired
+### 2. Form backend wired
 
-Both the homepage Free Consultation form and `contact.html` form currently:
-- Disable the submit button (✓ implemented)
-- Show a fake "thanks" success message
-- Don't actually capture or send the data anywhere
+Completed May 7, 2026. This no longer blocks launch.
 
-**Options to wire up:**
-1. **Formspree** (easiest, free tier covers low volume) — replace form action with `https://formspree.io/f/YOUR_FORM_ID`
-2. **Basin** — similar, also has free tier
-3. **WordPress Contact Form 7 / WPForms** — if migrating to WordPress (recommended)
-4. **Custom backend** — Node/PHP endpoint that emails info@fasmedicalsummitrcm.com
+Both the homepage Free Consultation form and `contact.html` form now POST to `/api/lead`.
 
-The current form HTML works as-is for any of these — just update the `action` attribute and `method`.
+Current behavior:
+- Validates required name, email, and phone server-side
+- Uses a honeypot field to silently discard obvious bot submissions
+- Stores each real submission as a private Vercel Blob JSON record at `leads/YYYY-MM-DD/<lead-id>.json`
+- Logs each lead in Vercel Function logs as a fallback
+- Sends email notifications through Resend when `RESEND_API_KEY` is added
+
+The private Vercel Blob store `fas-leads` is connected to the Vercel project. Optional remaining setup: add `RESEND_API_KEY` if the owners want every lead emailed to `info@fasmedicalsummitrcm.com` immediately.
 
 ### 3. Owner verification of unverified stats
 

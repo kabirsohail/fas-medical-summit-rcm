@@ -114,7 +114,7 @@ See `docs/CONTENT_GUIDELINES.md` for the full canonical data sheet and what to a
 **Ready to launch except for:**
 
 1. `og-image.png` — referenced in OG meta tags but file doesn't exist yet (1200×630 PNG needed)
-2. Form backend — both consultation forms show success messages but don't capture data yet (needs WPForms / Contact Form 7 / Formspree)
+2. Email notifications — consultation forms now store leads in private Vercel Blob records; add `RESEND_API_KEY` if owners want inbox notifications too
 3. Real client logos / leadership photos — currently using anonymized placeholder names
 4. Some service-page stats need owner verification (e.g., 78% IDR win rate, 67% appeal win rate, 94% prior auth approval)
 
@@ -123,7 +123,7 @@ See `docs/PENDING_TASKS.md` for the full launch checklist.
 ## Built with
 
 - Pure HTML, CSS, and vanilla JavaScript
-- Zero build dependencies, zero runtime dependencies, zero npm packages
+- Zero build step; one serverless dependency (`@vercel/blob`) for private lead storage
 - Google Fonts (Fraunces, Plus Jakarta Sans, JetBrains Mono)
 - Hand-coded SVG illustrations (no image files needed)
 - ~2.4 MB total site weight
