@@ -1460,6 +1460,19 @@ section { position: relative; padding: 140px 32px; }
   text-align: center; padding: 60px 20px;
 }
 .form-success.show { display: block; }
+.form-error {
+  display: none;
+  margin-top: 16px;
+  padding: 14px 18px;
+  border-radius: var(--radius-sm);
+  background: rgba(184, 84, 80, 0.10);
+  border: 1px solid var(--crimson);
+  color: var(--crimson);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.form-error.show { display: block; }
+.form-error a { color: var(--crimson); text-decoration: underline; }
 .form-success-icon {
   width: 64px; height: 64px;
   margin: 0 auto 24px;
@@ -1961,6 +1974,10 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
       <h3>Thank You</h3>
       <p>Your request has been received. A senior consultant will reach out within one business day.</p>
     </div>
+
+    <div class="form-error" id="form-error" role="alert">
+      Something went wrong sending your request. Please try again, or reach us directly at <a href="tel:9722945716">972-294-5716</a> or <a href="mailto:info@fasmedicalsummitrcm.com">info@fasmedicalsummitrcm.com</a>.
+    </div>
   </div>
 </section>
 
@@ -2155,9 +2172,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Form submission
 const form = document.getElementById('consultation-form');
 const formSuccess = document.getElementById('form-success');
-form.addEventListener('submit', (e) => {
+const formError = document.getElementById('form-error');
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
-  // Basic validation
   const required = form.querySelectorAll('[required]');
   let valid = true;
   required.forEach(field => {
@@ -2170,19 +2187,48 @@ form.addEventListener('submit', (e) => {
   });
   if (!valid) return;
 
-  // Prevent double-submit: disable submit button immediately
   const submitBtn = form.querySelector('button[type="submit"]');
+  const originalLabel = submitBtn ? submitBtn.textContent : '';
   if (submitBtn) {
     submitBtn.disabled = true;
     submitBtn.style.opacity = '0.7';
     submitBtn.style.cursor = 'wait';
+    submitBtn.textContent = 'Sending…';
   }
+  if (formError) formError.classList.remove('show');
 
-  // For WordPress integration, replace this section with WPForms/Contact Form 7 integration
-  // or POST to your form endpoint. This currently shows a success message only.
-  // TODO: send form data to backend (WPForms / Contact Form 7 / API endpoint)
-  form.style.display = 'none';
-  formSuccess.classList.add('show');
+  const data = Object.fromEntries(new FormData(form).entries());
+  data._source = window.location.pathname;
+  data._referrer = document.referrer || '(direct)';
+
+  try {
+    const res = await fetch('/api/lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    if (!res.ok) {
+      let err;
+      try { err = await res.json(); } catch { err = {}; }
+      throw new Error(err.error || 'submission_failed');
+    }
+    form.style.display = 'none';
+    formSuccess.classList.add('show');
+    formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  } catch (err) {
+    console.error('lead submit failed:', err);
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.style.opacity = '';
+      submitBtn.style.cursor = '';
+      submitBtn.textContent = originalLabel;
+    }
+    if (formError) {
+      formError.classList.add('show');
+    } else {
+      alert('Something went wrong sending your request. Please try again or call 972-294-5716.');
+    }
+  }
 });
 </script>
 

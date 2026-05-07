@@ -1,0 +1,8 @@
+{
+  "name": "fas-medical-summit-rcm",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  }
+}
