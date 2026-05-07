@@ -1703,6 +1703,32 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
 .svc-cta-banner p { font-size: 18px; color: var(--ink-secondary); max-width: 600px; margin: 0 auto 40px; line-height: 1.6; }
 
 /* Related links */
+
+/* Approach steps & testimonials (added) */
+.approach-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1200px; margin: 60px auto 0; }
+.approach-step { padding: 32px 24px; background: var(--bg-elevated); border: 1px solid var(--line); border-radius: var(--radius-md); transition: all 0.4s var(--ease-out); position: relative; }
+.approach-step:hover { border-color: var(--gold); transform: translateY(-4px); }
+.approach-step-num { font-family: var(--mono); font-size: 11px; color: var(--gold); letter-spacing: 0.16em; margin-bottom: 16px; }
+.approach-step h3 { font-size: 19px; font-weight: 500; margin-bottom: 12px; letter-spacing: -0.015em; font-family: var(--serif); }
+.approach-step p { font-size: 14px; line-height: 1.65; color: var(--ink-secondary); }
+
+.testimonial-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; max-width: 1200px; margin: 60px auto 0; }
+.testimonial-card { padding: 36px 30px; background: var(--bg-elevated); border: 1px solid var(--line); border-radius: var(--radius-md); position: relative; transition: all 0.4s var(--ease-out); }
+.testimonial-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+.testimonial-quote-mark { position: absolute; top: 12px; left: 22px; font-family: var(--serif); font-size: 60px; color: var(--gold); opacity: 0.4; line-height: 1; }
+.testimonial-quote { position: relative; font-size: 15px; line-height: 1.7; color: var(--ink-secondary); margin: 24px 0 28px; font-style: italic; font-family: var(--serif); font-weight: 400; }
+.testimonial-author { border-top: 1px solid var(--line); padding-top: 18px; }
+.testimonial-name { font-family: var(--serif); font-size: 17px; font-weight: 500; color: var(--ink-primary); margin-bottom: 4px; }
+.testimonial-role { font-family: var(--mono); font-size: 11px; color: var(--ink-tertiary); letter-spacing: 0.08em; }
+
+@media (max-width: 980px) {
+  .approach-steps { grid-template-columns: repeat(2, 1fr); }
+  .testimonial-cards { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .approach-steps { grid-template-columns: 1fr; }
+}
+
 .related-section { padding: 100px 32px; background: var(--bg-deep); border-top: 1px solid var(--line); }
 .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1200px; margin: 60px auto 0; }
 .related-card {
@@ -2040,6 +2066,71 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
         <div class="svc-stat-detail">For most procedure submissions.</div>
       </div>
 
+  </div>
+</section>
+
+<!-- enrichment-v1: approach + testimonials -->
+
+<section class="content-section">
+  <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+    <span class="eyebrow reveal" style="justify-content: center;">Our Approach</span>
+    <h2 class="reveal" style="margin-top: 24px;">Pain management billing —<br><span class="em" style="color: var(--gold); font-style: italic;">authorization and frequency rules.</span></h2>
+  </div>
+  <div class="approach-steps">
+    <div class="approach-step reveal">
+      <div class="approach-step-num">STEP 01</div>
+      <h3>Pre-authorize every injection and procedure</h3>
+      <p>Most pain procedures require prior authorization. We secure auth before the patient is on the table — not as a denial after the fact.</p>
+    </div>
+    <div class="approach-step reveal">
+      <div class="approach-step-num">STEP 02</div>
+      <h3>Code injections accurately</h3>
+      <p>CPT codes, modifiers, and units selected per the procedure performed and the spinal level treated. No bundled injections billed as separate procedures.</p>
+    </div>
+    <div class="approach-step reveal">
+      <div class="approach-step-num">STEP 03</div>
+      <h3>Handle frequency edits and step therapy</h3>
+      <p>Pain management has aggressive frequency limits and step-therapy requirements. We track them per payer so claims clear without medical-necessity denials.</p>
+    </div>
+    <div class="approach-step reveal">
+      <div class="approach-step-num">STEP 04</div>
+      <h3>Track payer policy changes</h3>
+      <p>Coverage policies for spinal injections, ablations, and stimulators change frequently. We monitor those changes so your billing doesn't fall out of compliance.</p>
+    </div>
+  </div>
+</section>
+
+<section class="content-section alt">
+  <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+    <span class="eyebrow reveal" style="justify-content: center;">Testimonials</span>
+    <h2 class="reveal" style="margin-top: 24px;">Trusted by surgical<br><span class="em" style="color: var(--gold); font-style: italic;">specialty practices.</span></h2>
+    <p class="reveal" style="max-width: 720px; margin: 24px auto 0; color: var(--ink-secondary); font-size: 17px; line-height: 1.6;">Hundreds of healthcare providers trust FAS Medical Summit for transparent, efficient revenue cycle management.</p>
+  </div>
+  <div class="testimonial-cards">
+    <figure class="testimonial-card reveal">
+      <div class="testimonial-quote-mark">&ldquo;</div>
+      <blockquote class="testimonial-quote">Working with FAS Medical Summit has been one of the most valuable decisions for my practice. Their team brings a rare combination of precision, transparency, and genuine care to every aspect of the billing process. From claim submissions to payer follow-ups, they handle each step with efficiency and integrity.</blockquote>
+      <figcaption class="testimonial-author">
+        <div class="testimonial-name">Dr. Adeel Haq, MD</div>
+        <div class="testimonial-role">Surgical Centers in Frisco &amp; McKinney</div>
+      </figcaption>
+    </figure>
+    <figure class="testimonial-card reveal">
+      <div class="testimonial-quote-mark">&ldquo;</div>
+      <blockquote class="testimonial-quote">Our claims are processed accurately and efficiently. Denials are minimized, and reimbursements are consistently timely. They&rsquo;ve helped us streamline our revenue cycle while maintaining full transparency and compliance. Their communication is clear and their follow-through is dependable.</blockquote>
+      <figcaption class="testimonial-author">
+        <div class="testimonial-name">Dr. Jessen Mukalel, MD</div>
+        <div class="testimonial-role">Multispecialty Surgical Center</div>
+      </figcaption>
+    </figure>
+    <figure class="testimonial-card reveal">
+      <div class="testimonial-quote-mark">&ldquo;</div>
+      <blockquote class="testimonial-quote">As a hospitalist managing complex inpatient care across multiple facilities, having a reliable billing partner is essential &mdash; and FAS Medical Summit has exceeded every expectation. Their team understands the unique demands of hospital-based medicine and consistently delivers accurate, timely billing with minimal disruption to clinical flow.</blockquote>
+      <figcaption class="testimonial-author">
+        <div class="testimonial-name">Dr. Anil Desai, MD</div>
+        <div class="testimonial-role">Multispecialty Surgical Center</div>
+      </figcaption>
+    </figure>
   </div>
 </section>
 
