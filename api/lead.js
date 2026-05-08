@@ -18,6 +18,29 @@ import { put } from '@vercel/blob';
 
 const TO_EMAIL = process.env.LEAD_TO_EMAIL || 'info@fasmedicalsummitrcm.com';
 const FROM_EMAIL = process.env.LEAD_FROM_EMAIL || 'FAS Lead Form <onboarding@resend.dev>';
+const ALLOWED_ORIGINS = new Set([
+  'https://fasmedicalsummitrcm.com',
+  'https://www.fasmedicalsummitrcm.com',
+  'https://fas-medical-summit-rcm.vercel.app',
+]);
+
+function isAllowedOrigin(origin = '') {
+  if (!origin) return true;
+  if (ALLOWED_ORIGINS.has(origin)) return true;
+  if (/^https:\/\/fas-medical-summit-rcm[-a-z0-9]*\.vercel\.app$/i.test(origin)) return true;
+  if (/^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(origin)) return true;
+  return false;
+}
+
+function setCors(req, res) {
+  const origin = req.headers.origin || '';
+  if (isAllowedOrigin(origin) && origin) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    res.setHeader('Vary', 'Origin');
+  }
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+}
 
 function escapeHtml(s) {
   return String(s ?? '')
@@ -134,11 +157,15 @@ function buildEmailBody(record, storage) {
 }
 
 export default async function handler(req, res) {
+  setCors(req, res);
+
+  const origin = req.headers.origin || '';
+  if (!isAllowedOrigin(origin)) {
+    return res.status(403).json({ error: 'origin_not_allowed' });
+  }
+
   // CORS / method
   if (req.method === 'OPTIONS') {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     return res.status(204).end();
   }
   if (req.method !== 'POST') {

@@ -803,13 +803,13 @@ section { position: relative; padding: 140px 32px; }
   color: var(--ink-tertiary); letter-spacing: 0.1em;
   margin-left: 8px;
 }
-.why-3d-live {
+.why-3d-status {
   margin-left: auto;
   font-family: var(--mono); font-size: 9px;
   color: var(--emerald); letter-spacing: 0.12em;
-  animation: pulse-live 2s ease-in-out infinite;
+  animation: pulse-status 2s ease-in-out infinite;
 }
-@keyframes pulse-live { 50% { opacity: 0.4; } }
+@keyframes pulse-status { 50% { opacity: 0.4; } }
 
 .why-3d-card.layer-back {
   top: 8%; left: 4%;
@@ -1753,7 +1753,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
     </div>
     <div class="contact-strip-right">
       <span class="contact-strip-pulse" aria-hidden="true"></span>
-      <span>Free 30-min consultation · 24-hr response</span>
+      <span>Free 30-min consultation · RCM fit review</span>
     </div>
   </div>
 </div>
@@ -2178,6 +2178,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Form submission
 const form = document.getElementById('consultation-form');
 const formSuccess = document.getElementById('form-success');
+if (form) {
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   // Basic validation
@@ -2197,8 +2198,9 @@ form.addEventListener('submit', (e) => {
   // or POST to your form endpoint. This currently shows a success message only.
   // TODO: send form data to backend (WPForms / Contact Form 7 / API endpoint)
   form.style.display = 'none';
-  formSuccess.classList.add('show');
+  if (formSuccess) formSuccess.classList.add('show');
 });
+}
 </script>
 
 </body>

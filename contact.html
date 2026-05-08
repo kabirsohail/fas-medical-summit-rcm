@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact FAS Medical Summit | Free Consultation</title>
-<meta name="description" content="Schedule a free, no-obligation consultation. Twenty-four hour response. Call 972-294-5716 or fill out our short form to get started.">
+<meta name="description" content="Schedule a free, no-obligation consultation. Call 972-294-5716 or fill out our short form to get started.">
 <meta name="keywords" content="medical billing, revenue cycle management, RCM, surgical billing, ASC billing, anesthesia billing, FAS Medical Summit, Texas medical billing">
 
 <!-- Open Graph -->
@@ -803,13 +803,13 @@ section { position: relative; padding: 140px 32px; }
   color: var(--ink-tertiary); letter-spacing: 0.1em;
   margin-left: 8px;
 }
-.why-3d-live {
+.why-3d-status {
   margin-left: auto;
   font-family: var(--mono); font-size: 9px;
   color: var(--emerald); letter-spacing: 0.12em;
-  animation: pulse-live 2s ease-in-out infinite;
+  animation: pulse-status 2s ease-in-out infinite;
 }
-@keyframes pulse-live { 50% { opacity: 0.4; } }
+@keyframes pulse-status { 50% { opacity: 0.4; } }
 
 .why-3d-card.layer-back {
   top: 8%; left: 4%;
@@ -1683,7 +1683,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
 
   <!-- Open Graph -->
   <meta property="og:title" content="Contact FAS Medical Summit | Free Consultation">
-  <meta property="og:description" content="Schedule a free, no-obligation consultation. Twenty-four hour response. Call 972-294-5716 or fill out our short form to get started.">
+  <meta property="og:description" content="Schedule a free, no-obligation consultation. Call 972-294-5716 or fill out our short form to get started.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://fasmedicalsummitrcm.com/contact.html">
   <meta property="og:site_name" content="FAS Medical Summit RCM">
@@ -1694,7 +1694,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Contact FAS Medical Summit | Free Consultation">
-  <meta name="twitter:description" content="Schedule a free, no-obligation consultation. Twenty-four hour response. Call 972-294-5716 or fill out our short form to get started.">
+  <meta name="twitter:description" content="Schedule a free, no-obligation consultation. Call 972-294-5716 or fill out our short form to get started.">
   <meta name="twitter:image" content="https://fasmedicalsummitrcm.com/og-image.png">
 
   <!-- Robots -->
@@ -1705,7 +1705,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
   "@context": "https://schema.org",
   "@type": "ContactPage",
   "name": "Contact FAS Medical Summit | Free Consultation",
-  "description": "Schedule a free, no-obligation consultation. Twenty-four hour response. Call 972-294-5716 or fill out our short form to get started.",
+  "description": "Schedule a free, no-obligation consultation. Call 972-294-5716 or fill out our short form to get started.",
   "url": "https://fasmedicalsummitrcm.com/contact.html"
 }
   </script>
@@ -1736,7 +1736,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
     </div>
     <div class="contact-strip-right">
       <span class="contact-strip-pulse" aria-hidden="true"></span>
-      <span>Free 30-min consultation · 24-hr response</span>
+      <span>Free 30-min consultation · RCM fit review</span>
     </div>
   </div>
 </div>
@@ -1848,7 +1848,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
     </div>
     <span class="eyebrow" style="justify-content: center;">Get In Touch</span>
     <h1>Schedule your<br><span class="accent">free consultation.</span></h1>
-    <p class="page-hero-sub">Twenty-four hour response. No obligation. We&apos;ll review your current revenue cycle performance, identify recoverable revenue most billing partners miss, and tell you honestly whether we&apos;re the right fit for your practice.</p>
+    <p class="page-hero-sub">No obligation. We&apos;ll review your current revenue cycle performance, identify potential recovery opportunities in your current workflow, and tell you honestly whether we&apos;re the right fit for your practice.</p>
   </div>
 </section>
 
@@ -2212,6 +2212,7 @@ const form = document.getElementById('consultation-form');
 const formSuccess = document.getElementById('form-success');
 const formError = document.getElementById('form-error');
 const defaultFormError = formError ? formError.innerHTML : '';
+if (form) {
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   const required = form.querySelectorAll('[required]');
@@ -2277,6 +2278,7 @@ form.addEventListener('submit', async (e) => {
     }
   }
 });
+}
 </script>
 
 </body>

@@ -803,13 +803,13 @@ section { position: relative; padding: 140px 32px; }
   color: var(--ink-tertiary); letter-spacing: 0.1em;
   margin-left: 8px;
 }
-.why-3d-live {
+.why-3d-status {
   margin-left: auto;
   font-family: var(--mono); font-size: 9px;
   color: var(--emerald); letter-spacing: 0.12em;
-  animation: pulse-live 2s ease-in-out infinite;
+  animation: pulse-status 2s ease-in-out infinite;
 }
-@keyframes pulse-live { 50% { opacity: 0.4; } }
+@keyframes pulse-status { 50% { opacity: 0.4; } }
 
 .why-3d-card.layer-back {
   top: 8%; left: 4%;
@@ -1823,7 +1823,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
     </div>
     <div class="contact-strip-right">
       <span class="contact-strip-pulse" aria-hidden="true"></span>
-      <span>Free 30-min consultation · 24-hr response</span>
+      <span>Free 30-min consultation · RCM fit review</span>
     </div>
   </div>
 </div>
@@ -1934,7 +1934,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
       <span>Our Process</span>
     </div>
     <span class="eyebrow">Your Journey With Us</span>
-    <h1>Eight stages.<br><span class="serif-italic">Zero disruption.</span></h1>
+    <h1>Eight stages.<br><span class="serif-italic">Low-disruption transition.</span></h1>
     <p class="page-hero-sub">From the first call to year-one results, every stage is engineered for a smooth transition. We&apos;ve onboarded hundreds of practices—the path is well-traveled, the timeline is predictable, the outcomes are measurable. Scroll through to see exactly what happens, when, and why.</p>
   </div>
 </section>
@@ -1979,7 +1979,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
         <div class="roadmap-card">
           <div class="roadmap-card-time">WEEK 2-3</div>
           <h3>System Integration & Setup</h3>
-          <p>Direct integration with your existing EHR and practice management systems—Epic, Athena, eClinicalWorks, NextGen, AdvancedMD, or others. Zero data migration headaches. We work inside your environment, not against it.</p>
+          <p>Direct integration with your existing EHR and practice management systems—Epic, Athena, eClinicalWorks, NextGen, AdvancedMD, or others. Reduced data migration friction. We work inside your environment, not against it.</p>
           <div class="roadmap-card-meta">
             <span class="meta-item"><span class="meta-dot"></span> HIPAA-compliant data flow</span>
             <span class="meta-item"><span class="meta-dot"></span> Single sign-on configured</span>
@@ -2005,7 +2005,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
         <div class="roadmap-card">
           <div class="roadmap-card-time">WEEK 5-6</div>
           <h3>Pilot Phase</h3>
-          <p>Two-week parallel run with a defined subset of claims. Daily quality metrics. Direct comparison against your previous billing operation. We don&apos;t go live until pilot benchmarks are met—your safety net stays intact throughout.</p>
+          <p>Two-week parallel run with a defined subset of claims. Daily quality metrics. Direct comparison against your previous billing operation. We move forward only after pilot benchmarks are reviewed—your safety net stays in place throughout.</p>
           <div class="roadmap-card-meta">
             <span class="meta-item"><span class="meta-dot"></span> Daily QA reporting</span>
             <span class="meta-item"><span class="meta-dot"></span> Side-by-side validation</span>
@@ -2293,6 +2293,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Form submission
 const form = document.getElementById('consultation-form');
 const formSuccess = document.getElementById('form-success');
+if (form) {
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   // Basic validation
@@ -2312,8 +2313,9 @@ form.addEventListener('submit', (e) => {
   // or POST to your form endpoint. This currently shows a success message only.
   // TODO: send form data to backend (WPForms / Contact Form 7 / API endpoint)
   form.style.display = 'none';
-  formSuccess.classList.add('show');
+  if (formSuccess) formSuccess.classList.add('show');
 });
+}
 
 // Roadmap progress line animation
 const roadmapTimeline = document.querySelector('.roadmap-timeline');
