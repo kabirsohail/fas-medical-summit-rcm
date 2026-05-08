@@ -177,7 +177,9 @@ h3 { font-size: clamp(24px, 2.5vw, 36px); }
   max-width: 1320px; margin: 0 auto;
   display: flex; align-items: center; justify-content: space-between;
 }
-.logo { display: flex; align-items: center; gap: 14px; font-family: var(--serif); font-size: 22px; }
+.logo { display: flex; align-items: center; gap: 0; font-family: var(--serif); font-size: 22px; flex-shrink: 0; text-decoration: none; }
+.logo-image { display: block; width: clamp(210px, 22vw, 300px); height: auto; max-width: 100%; }
+.footer-brand .logo-image { width: min(310px, 100%); }
 .logo-mark {
   width: 64px; height: 42px;
   background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 45%, var(--gold-deep) 100%);
@@ -1687,10 +1689,8 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
   .contact-strip-item span:not(.contact-strip-icon) { font-size: 10.5px; }
   .contact-strip-left { gap: 12px; }
   .nav { top: 32px; }
-  .logo-mark { width: 56px; height: 38px; }
-  .logo-mark::before { font-size: 17px; }
-  .logo-text strong { font-size: 16px; }
-  .logo-text small { font-size: 8px; letter-spacing: 0.14em; }
+  .logo-image { width: clamp(200px, 56vw, 242px); }
+  .footer-brand .logo-image { width: min(282px, 100%); }
 }
 
 </style>
@@ -1761,13 +1761,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="index.html" class="logo" aria-label="FAS Medical Summit Home">
-      <div class="logo-mark" aria-hidden="true">
-        <span class="logo-shine"></span>
-      </div>
-      <div class="logo-text">
-        <strong>FAS Medical Summit</strong>
-        <small>REVENUE CYCLE MANAGEMENT · <span class="gold-rcm">RCM</span></small>
-      </div>
+      <img class="logo-image" src="assets/fas-rcm-logo-theme.png" alt="FAS Medical Summit RCM" decoding="async">
     </a>
 
     <div class="nav-menu">
@@ -2009,11 +2003,7 @@ footer { background: var(--bg-surface); border-top: 1px solid var(--line); paddi
     <div class="footer-top">
       <div class="footer-brand">
         <a href="index.html" class="logo">
-          <div class="logo-mark" aria-hidden="true"></div>
-          <div class="logo-text">
-            <strong>FAS Medical Summit</strong>
-            <small>FRISCO · TEXAS</small>
-          </div>
+          <img class="logo-image" src="assets/fas-rcm-logo-theme.png" alt="FAS Medical Summit RCM" loading="lazy" decoding="async">
         </a>
         <p>Enterprise revenue cycle management for surgical specialties. Headquartered in Frisco, Texas. We simplify and optimize your processes, lower operational costs, and unlock resources to drive your organization's financial growth and long-term success.</p>
         <div class="footer-cert">
